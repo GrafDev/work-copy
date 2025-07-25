@@ -88,7 +88,7 @@ export class Game1 {
 
             this.spinButton.addEventListener('click', () => {
                 if (!gameState.buttonBlocked) {
-                    this.hideWinText();
+                    this.triggerButtonPress();
                 }
             });
 
@@ -121,6 +121,21 @@ export class Game1 {
             });
         }
 
+        // Click anywhere on screen to spin
+        document.addEventListener('click', (e) => {
+            if (!gameState.buttonBlocked && !e.target.closest('.modal-content') && !e.target.closest('#language-selector')) {
+                this.triggerButtonPress();
+            }
+        });
+
+        // Keyboard events for space and enter
+        document.addEventListener('keydown', (e) => {
+            if ((e.code === 'Space' || e.code === 'Enter') && !gameState.buttonBlocked) {
+                e.preventDefault();
+                this.triggerButtonPress();
+            }
+        });
+
         const modalButton = document.querySelector('.modal-button');
         if (modalButton) {
             modalButton.addEventListener('click', (e) => {
@@ -149,6 +164,22 @@ export class Game1 {
             const remainingSpins = 2 - gameState.spinCount;
             this.counterTextElement.textContent = remainingSpins > 0 ? remainingSpins : 0;
         }
+    }
+
+    triggerButtonPress() {
+        if (gameState.isSpinning || gameState.buttonBlocked) return;
+        
+        // Visual button press effect
+        if (this.spinButton) {
+            this.spinButton.style.transform = 'translateX(-50%) scale(0.9)';
+            
+            setTimeout(() => {
+                this.spinButton.style.transform = 'translateX(-50%)';
+            }, 100);
+        }
+        
+        this.hideWinText();
+        this.spin();
     }
 
     spin() {
