@@ -1,0 +1,142 @@
+/* mans.css - Styles for characters on the sides of the wheel using aspect ratios */
+
+/* General styles for characters */
+.mans {
+    position: fixed;
+    z-index: 4;
+    width: 20%;
+    transition: all 0.3s ease;
+    bottom: 0;
+}
+
+/* First character placement - left of wheel */
+.man-01 {
+    left: 10%;
+    transform: scaleX(-1);
+}
+
+/* Second character placement - right of wheel */
+.man-02 {
+    right: 10%;
+}
+
+/* Third character placement - center, under spin button */
+.man-03 {
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    bottom: -5%;
+    width: 30%;
+}
+
+/* Hover effect for characters */
+.mans:hover {
+    transform: translateY(-5px);
+    filter: brightness(1.1);
+}
+
+/* Apply reflection and account for it on hover */
+.man-01:hover {
+    transform: translateY(-5px) scaleX(-1);
+}
+
+/* Account for transformation for man-03 on hover */
+.man-03:hover {
+    transform: translateX(-50%) translateY(-5px);
+}
+
+/* Prevent overlap with button */
+@media (max-height: 700px) {
+    .mans {
+        opacity: 0.85;
+    }
+}
+/* Mobile phones - portrait orientation */
+@media   (min-aspect-ratio: 8/16){
+    .man-01, .man-02 {
+        display: block;
+        width: 40%;
+    }
+    .man-01 {
+        left:-15%;
+    }
+    .man-02 {
+        right:-15%;
+    }
+}
+
+/* Mobile phones - portrait orientation (very high aspect ratio) */
+@media (max-width: 530px) {
+    .man-01, .man-02 {
+        display: none;
+    }
+
+    .man-03 {
+        display: block;
+        width: 80%;
+        bottom: -160%;
+    }
+}
+
+/* Mobile - landscape orientation */
+@media (min-aspect-ratio: 16/9) and (max-width: 1000px) {
+    .mans {
+        width: 22%;
+        bottom: -17%;
+    }
+
+    .man-01 {
+        left: 15%;
+        transform: scaleX(-1);
+    }
+
+    .man-02 {
+        right: 15%;
+    }
+
+    .man-03 {
+        display: none;
+    }
+}
+
+/* Tablets */
+@media (min-aspect-ratio: 9/16) and (max-aspect-ratio: 16/9) and (min-width: 600px) {
+    .mans {
+        width: 23.3%;
+        bottom:0;
+    }
+
+    .man-01 {
+        left: 7%;
+        transform: scaleX(-1);
+    }
+
+    .man-02 {
+        right: 7%;
+    }
+
+    .man-03 {
+        display: none;
+    }
+}
+
+/* Desktop (wide screens) */
+@media (min-width: 1280px) and (min-aspect-ratio: 3/2) {
+    .mans {
+        width: 20%;
+        bottom: 0;
+    }
+
+    .man-01 {
+        left: 10%;
+        transform: scaleX(-1);
+    }
+
+    .man-02 {
+        right: 10%;
+    }
+
+    .man-03 {
+        display: none;
+    }
+}
