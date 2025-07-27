@@ -12,7 +12,7 @@ export class DragonAnimations {
 
         gsap.set(dragonsElement, {
             transformOrigin: "center center",
-            zIndex: 25
+            zIndex: 60
         });
 
         dragonsElement.style.animation = 'none';
@@ -29,17 +29,17 @@ export class DragonAnimations {
 
         swayTimeline
             .to(dragonsElement, {
-                rotation: 20,
+                scale: 1.1,
                 duration: segmentDuration,
                 ease: "sine.inOut"
             })
             .to(dragonsElement, {
-                rotation: -20,
+                scale: 0.9,
                 duration: segmentDuration,
                 ease: "sine.inOut"
             })
             .to(dragonsElement, {
-                rotation: 0,
+                scale: 1,
                 duration: segmentDuration,
                 ease: "sine.inOut",
                 onComplete: () => {
@@ -62,7 +62,7 @@ export class DragonAnimations {
         dragonsElement.style.top = '50%';
 
         gsap.set(dragonsElement, {
-            zIndex: 25
+            zIndex: 60
         });
 
         const pulsationTimeline = gsap.timeline({

@@ -213,10 +213,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const wheelElement = document.querySelector('.wheel-image');
         if (wheelElement) {
             Animations1.wheelSpin(wheelElement, 0, 0).then(() => {
-                const spinButton = document.getElementById('spin-button');
-                if (spinButton) {
-                    Animations1.buttonGlow(spinButton);
-                }
             });
         }
 

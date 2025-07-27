@@ -40,43 +40,57 @@ export class Animations1 {
 
         gsap.set(man01, {
             opacity: 0,
-            y: 150,
+            x: -200,
+            rotationY: 2160,
+            scaleX: -1,
+            transformPerspective: 1000,
+            transformStyle: "preserve-3d"
         });
 
         gsap.set(man02, {
             opacity: 0,
-            y: 150,
+            x: 200,
+            rotationY: -2160,
+            transformPerspective: 1000,
+            transformStyle: "preserve-3d"
         });
 
         if (man03) {
             gsap.set(man03, {
                 opacity: 0,
-                y: 150,
+                x: 0,
+                rotationY: 2520,
+                transformPerspective: 1000,
+                transformStyle: "preserve-3d"
             });
         }
 
         gsap.to(man01, {
             opacity: 1,
-            y: 0,
+            x: 0,
+            rotationY: 0,
+            scaleX: -1,
             duration: 1.2,
-            delay: 0.8,
+            delay: 0,
             ease: "power3.out"
         });
 
         gsap.to(man02, {
             opacity: 1,
-            y: 0,
+            x: 0,
+            rotationY: 0,
             duration: 1.2,
-            delay: 1,
+            delay: 0,
             ease: "power3.out"
         });
 
         if (man03) {
             gsap.to(man03, {
                 opacity: 1,
-                y: 0,
+                x: 0,
+                rotationY: 0,
                 duration: 1.2,
-                delay: 1.2,
+                delay: 0,
                 ease: "power3.out"
             });
         }
@@ -157,18 +171,25 @@ export class Animations1 {
 
         const spinButton = document.querySelector('.spin-button-image');
         if (spinButton) {
-            gsap.set(spinButton, {opacity: 0});
-            gsap.to(spinButton, {
-                opacity: 1,
-                duration: 0.5,
-                delay: 0.7
-            });
+            spinButton.style.opacity = '1';
         }
 
         const dragonsElement = document.querySelector('.logo02.dragons');
         if (dragonsElement) {
             dragonsElement.style.animation = 'none';
-            DragonAnimations.startDragonsPulsation(dragonsElement);
+            gsap.fromTo(dragonsElement, 
+                { scale: 1.5, opacity: 0 }, 
+                { 
+                    scale: 1, 
+                    opacity: 1, 
+                    duration: 1, 
+                    delay: 0.4, 
+                    ease: "back.out(1.7)",
+                    onComplete: () => {
+                        DragonAnimations.startDragonsPulsation(dragonsElement);
+                    }
+                }
+            );
         }
 
         this.initializeMans();
@@ -279,7 +300,7 @@ export class Animations1 {
         gsap.killTweensOf(logo2Element);
         gsap.set(logo2Element, {
             transformOrigin: "center center",
-            zIndex: 65
+            zIndex: 42
         });
 
         const totalDuration = spinDuration + settleDuration;
@@ -429,25 +450,6 @@ export class Animations1 {
         }
     }
 
-    static buttonGlow(button) {
-        button.classList.add('glow');
-        return gsap.to(button, {
-            scale: 1.02,
-            duration: 1.5,
-            repeat: -1,
-            yoyo: true,
-            ease: "power1.inOut"
-        });
-    }
-
-    static stopButtonGlow(button) {
-        gsap.killTweensOf(button);
-        button.classList.remove('glow');
-        gsap.set(button, {
-            scale: 1,
-            filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3))'
-        });
-    }
 
     static showModal(modal) {
         return new Promise((resolve) => {

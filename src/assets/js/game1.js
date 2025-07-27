@@ -67,59 +67,12 @@ export class Game1 {
     }
 
     startButtonShake() {
-        if (this.spinButton && !gameState.isSpinning && !gameState.buttonBlocked) {
-            this.spinButton.classList.add('shaking');
-        }
     }
 
     stopButtonShake() {
-        if (this.spinButton) {
-            this.spinButton.classList.remove('shaking');
-        }
     }
 
     initEventListeners() {
-        if (this.spinButton) {
-            this.spinButton.addEventListener('mousedown', () => {
-                if (!gameState.buttonBlocked) {
-                    this.spinButton.src = this.hoverButtonSrc;
-                }
-            });
-
-            this.spinButton.addEventListener('click', () => {
-                if (!gameState.buttonBlocked) {
-                    this.triggerButtonPress();
-                }
-            });
-
-            this.spinButton.addEventListener('mouseenter', () => {
-
-                const wasShaking = this.spinButton.classList.contains('shaking');
-
-                if (!gameState.buttonBlocked && !gameState.isSpinning) {
-                    if (wasShaking) {
-                        this.spinButton.classList.remove('shaking');
-                    }
-
-                    this.spinButton.style.transform = 'translateX(-50%) scale(1.05)';
-                    this.spinButton.style.filter = 'drop-shadow(0 6px 8px rgba(0, 0, 0, 0.4)) brightness(1.05)';
-
-                    this.buttonHoverState = {wasShaking};
-                }
-            });
-
-            this.spinButton.addEventListener('mouseleave', () => {
-
-                if (!gameState.buttonBlocked && !gameState.isSpinning) {
-                    this.spinButton.style.transform = 'translateX(-50%)';
-                    this.spinButton.style.filter = 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3))';
-
-                    if (this.buttonHoverState && this.buttonHoverState.wasShaking) {
-                        this.spinButton.classList.add('shaking');
-                    }
-                }
-            });
-        }
 
         // Click anywhere on screen to spin
         document.addEventListener('click', (e) => {
@@ -145,18 +98,13 @@ export class Game1 {
                     this.hideWinText();
                     Animations1.hideModal(this.modal);
                     resetState();
-                    this.spinButton.src = this.defaultButtonSrc;
-                    Animations1.buttonGlow(this.spinButton);
-                    this.startButtonShake();
                 }
             });
         }
     }
 
     initializeWheel() {
-        Animations1.wheelSpin(this.wheelElement, 0, 0).then(() => {
-            Animations1.buttonGlow(this.spinButton);
-        });
+        Animations1.wheelSpin(this.wheelElement, 0, 0);
     }
 
     updateCounterText() {
@@ -169,14 +117,6 @@ export class Game1 {
     triggerButtonPress() {
         if (gameState.isSpinning || gameState.buttonBlocked) return;
         
-        // Visual button press effect
-        if (this.spinButton) {
-            this.spinButton.style.transform = 'translateX(-50%) scale(0.9)';
-            
-            setTimeout(() => {
-                this.spinButton.style.transform = 'translateX(-50%)';
-            }, 100);
-        }
         
         this.hideWinText();
         this.spin();
@@ -192,9 +132,6 @@ export class Game1 {
         this.updateCounterText();
 
         this.spriteManager.reset();
-        Animations1.stopButtonGlow(this.spinButton);
-        this.stopButtonShake();
-        this.spinButton.src = this.hoverButtonSrc;
 
         const dragonsElement = document.querySelector('.logo02.dragons');
         if (dragonsElement) {
@@ -228,7 +165,6 @@ export class Game1 {
                 this.showWinText('100FS');
                 setTimeout(() => {
                     gameState.buttonBlocked = false;
-                    this.spinButton.src = this.defaultButtonSrc;
                     this.startButtonShake();
                 }, 1000);
             } else if (gameState.spinCount === 2) {

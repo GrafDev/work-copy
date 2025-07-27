@@ -11,10 +11,12 @@
 }
 
 .circle-center {
-    z-index: 50;
+    z-index: 42;
     isolation: isolate;
+    width: 20%;
 }
 
 .dragons {
-    z-index: 44;
+    z-index: 60;
+    width: 48%;
 }

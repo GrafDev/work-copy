@@ -41,7 +41,7 @@ body {
     position: absolute;
     left: 50%;
     bottom: -25%;
-    width: calc(var(--wheel-section-size) * 0.45);
+    width: calc(var(--wheel-section-size) * 0.27);
     transform: translateX(-50%);
     cursor: pointer;
     transition: transform 0.2s ease;
@@ -51,7 +51,7 @@ body {
 /* Increase button size for narrow screens */
 @media (max-width: 530px) {
     .spin-button-image {
-        width: calc(var(--wheel-section-size) * 0.54);
+        width: calc(var(--wheel-section-size) * 0.324);
         bottom: -25%;
     }
 }
@@ -59,11 +59,12 @@ body {
 /* Arrow styles */
 .wheel-arrow {
     position: absolute;
-    top: -5%;
+    top: -8%;
     left: 50%;
     transform: translateX(-50%);
-    width: calc(var(--wheel-section-size) * 0.12);
+    width: calc(var(--wheel-section-size) * 0.078);
     z-index: 700;
+    transform-origin: center 400%;
 }
 
 /* Counter styles */
@@ -94,7 +95,7 @@ body {
         top: -20%;
         left: 50%;
         transform: translateX(-50%);
-        width: calc(var(--wheel-section-size) * 0.45);
+        width: calc(var(--wheel-section-size) * 0.27);
         z-index: 7;
     }
 
@@ -145,7 +146,7 @@ body {
     .spin-button-image {
         left: 50%;
         bottom: -20%;
-        width: calc(var(--wheel-section-size) * 0.54);
+        width: calc(var(--wheel-section-size) * 0.324);
         transform: translateX(-50%);
         transition: transform 0.2s ease;
     }
@@ -169,7 +170,7 @@ body {
 /* Spin button styles for iOS landscape */
 .ios-landscape .spin-button-image {
     bottom: -18%;
-    width: calc(var(--wheel-section-size) * 0.45);
+    width: calc(var(--wheel-section-size) * 0.27);
 }
 
 /* Character styles for iOS landscape orientation */

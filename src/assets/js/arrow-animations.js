@@ -7,7 +7,7 @@ export class ArrowAnimations {
         }
 
         gsap.set(arrowElement, {
-            transformOrigin: "center 15%"
+            transformOrigin: "center 25%"
         });
 
         const checkpointAngles = [
