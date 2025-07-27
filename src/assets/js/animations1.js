@@ -173,6 +173,27 @@ export class Animations1 {
 
         this.initializeMans();
         this.spriteManager.initialize();
+        
+        // Initialize wheel-lightes last with fade and constant rotation
+        const wheelLightes = document.querySelector('.wheel-lightes');
+        if (wheelLightes) {
+            gsap.set(wheelLightes, { opacity: 0, rotation: 0 });
+            gsap.to(wheelLightes, { 
+                opacity: 1, 
+                duration: 1, 
+                delay: 1.5, 
+                ease: "power2.out",
+                onComplete: () => {
+                    // Start constant slow rotation
+                    gsap.to(wheelLightes, {
+                        rotation: 360,
+                        duration: 6,
+                        repeat: -1,
+                        ease: "none"
+                    });
+                }
+            });
+        }
     }
 
 
@@ -312,9 +333,15 @@ export class Animations1 {
             const config = this.getSpinConfig(spinCount);
             const totalAngle = currentRotation + config.rotations + (360 - (currentRotation % 360)) + config.finalAngle;
             const wheelTextImage = document.querySelector('.wheel-text-image');
+            const wheelBorder = document.querySelector('.wheel-border');
+            
             if (wheelTextImage) {
                 gsap.set(wheelTextImage, { rotation: currentRotation });
                 gsap.set(wheelTextImage, { filter: 'blur(5px)' });
+            }
+            
+            if (wheelBorder) {
+                gsap.set(wheelBorder, { rotation: currentRotation });
             }
 
             const spinDuration = config.duration;
@@ -338,7 +365,7 @@ export class Animations1 {
                 }
             });
 
-            tl.to([element, wheelTextImage], {
+            tl.to([element, wheelTextImage, wheelBorder], {
                 rotation: totalAngle,
                 duration: spinDuration,
                 ease: "power7.inOut"

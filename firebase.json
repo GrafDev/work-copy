@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "wheel-dragon-button",
+    "site": "work-copy-wheel",
     "public": "dist",
     "ignore": [
       "firebase.json",

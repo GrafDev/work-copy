@@ -6,6 +6,7 @@ import { Animations1 } from './animations1.js';
 import { DragonAnimations } from './dragon-animations.js';
 import { FireSpriteManager } from './fire-sprite-manager.js';
 import { initializeApp } from 'firebase/app';
+import { gsap } from 'gsap';
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -66,6 +67,16 @@ function showContent() {
     hiddenElements.forEach(el => {
         el.classList.remove('content-hidden');
     });
+    
+    // Special animations for wheel elements
+    const wheelBorder = document.querySelector('.wheel-border');
+    
+    if (wheelBorder) {
+        gsap.fromTo(wheelBorder, 
+            { opacity: 0, scale: 1.5 }, 
+            { opacity: 1, scale: 1, duration: 1, delay: 0.7, ease: "back.out(1.7)" }
+        );
+    }
 }
 
 function setIOSLandscapeVh() {
@@ -158,6 +169,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         new URL('/src/assets/images/logo02_dragons.png', import.meta.url).href,
         new URL('/src/assets/images/arrow.png', import.meta.url).href,
         new URL('/src/assets/images/wheel.png', import.meta.url).href,
+        new URL('/src/assets/images/wheel-border.png', import.meta.url).href,
+        new URL('/src/assets/images/wheel-lightes.png', import.meta.url).href,
         new URL('/src/assets/images/button_spin.png', import.meta.url).href,
         new URL('/src/assets/images/button_spin_hover.png', import.meta.url).href,
         new URL('/src/assets/images/sector.png', import.meta.url).href,
