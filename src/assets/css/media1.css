@@ -13,6 +13,7 @@ body {
     transform: translate(-50%, -50%);
     width: var(--wheel-section-size);
     height: var(--wheel-section-size);
+    overflow: visible;
 }
 
 /* Medium screens - reduce wheel size by 10% */
@@ -25,7 +26,21 @@ body {
 /* Large screens - increase wheel size */
 @media (min-width: 1200px) {
     :root {
-        --wheel-section-size: min(70vw, 60vh, 800px);
+        --wheel-section-size: min(60vw, 70vh, 900px);
+    }
+}
+
+/* Extra large screens */
+@media (min-width: 1600px) {
+    :root {
+        --wheel-section-size: min(50vw, 70vh, 1000px);
+    }
+}
+
+/* Ultra wide screens */
+@media (min-width: 2000px) {
+    :root {
+        --wheel-section-size: min(40vw, 70vh, 1100px);
     }
 }
 
@@ -72,21 +87,23 @@ body {
     position: absolute;
     top: -5%;
     left: 65%;
-    width: calc(var(--wheel-section-size) * 0.4);
-    z-index: 7;
+    width: calc(var(--wheel-section-size) * 0.28);
+    z-index: 100;
 }
 
 .counter-text {
     position: absolute;
-    top: 43%;
-    left: 77%;
+    top: 49%;
+    left: 80%;
     transform: translate(-50%, -50%);
-    font-size: calc(var(--wheel-section-size) * 0.06);
-    color: #dfdfdf;
+    font-size: calc(var(--wheel-section-size) * 0.08);
+    color: #ff0000;
     font-family: Arial, sans-serif;
     font-weight: bold;
     text-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
-    z-index: 8;
+    -webkit-text-stroke: 2px #ffd700;
+    text-stroke: 2px #ffd700;
+    z-index: 101;
 }
 
 /* Counter position adjustment for narrow screens */
@@ -95,12 +112,12 @@ body {
         top: -20%;
         left: 50%;
         transform: translateX(-50%);
-        width: calc(var(--wheel-section-size) * 0.27);
-        z-index: 7;
+        width: calc(var(--wheel-section-size) * 0.189);
+        z-index: 100;
     }
 
     .counter-text {
-        font-size: calc(var(--wheel-section-size) * 0.08);
+        font-size: calc(var(--wheel-section-size) * 0.10);
     }
 }
 
@@ -108,7 +125,7 @@ body {
 .logo01 {
     position: absolute;
     left: 25%;
-    top: -5%;
+    top: 1%;
     width: calc(var(--wheel-section-size) * 0.4);
     transform: translateX(-50%);
     z-index: 5;
@@ -117,7 +134,7 @@ body {
 /* Logo position adjustment for narrow screens */
 @media (max-width: 530px) {
     .logo01 {
-        top: -50%;
+        top: -42%;
         width: calc(var(--wheel-section-size) * 0.55);
     }
 }
@@ -139,7 +156,7 @@ body {
 
     .logo01 {
         left: 15%;
-        top: -10%;
+        top: -2%;
     }
 
     /* Spin button styles */
@@ -188,7 +205,7 @@ body {
 
 /* Logo for iOS landscape orientation */
 .ios-landscape .logo01 {
-    top: -15%;
+    top: -7%;
     left: 20%;
     width: calc(var(--wheel-section-size) * 0.35);
     transform: translateX(-50%);
@@ -196,7 +213,7 @@ body {
 }
 
 .ios-landscape .logo01.letters-o {
-    top: -15%;
+    top: -7%;
     left: 20%;
     width: calc(var(--wheel-section-size) * 0.35);
 }
@@ -229,7 +246,7 @@ body {
 
     .ios-landscape .logo01,
     .ios-landscape .logo01.letters-o {
-        top: -12%;
+        top: -4%;
         width: calc(var(--wheel-section-size) * 0.3);
     }
 

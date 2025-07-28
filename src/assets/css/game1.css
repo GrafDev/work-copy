@@ -9,20 +9,31 @@
     transform: translate(-50%, -50%);
     width: var(--wheel-section-size);
     height: var(--wheel-section-size);
+    overflow: visible;
 }
 
 .logo01 {
     position: absolute;
     left: 25%;
-    top: -5%;
+    top: 1%;
     width: 40%;
     transform: translateX(-50%);
     z-index: 55;
 }
 
+.logo01:not(.letters-o) {
+    animation: logoMain 6s ease-in-out infinite;
+    animation-delay: 2.5s;
+    overflow: visible !important;
+}
+
 .letters-o {
-    animation: logoShine 2s ease-in-out infinite;
+    opacity: 0;
+    animation: logoShine 2s ease-in-out infinite, logoLetters 6s ease-in-out infinite;
+    animation-delay: 4.5s, 2.5s;
     z-index: 56;
+    filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));
+    overflow: visible !important;
 }
 
 .wheel-arrow {
@@ -33,16 +44,18 @@
     z-index: 700;
     width: 7.8%;
     transform-origin: center 400%;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
 }
 
 .counter {
     position: absolute;
     top: -5%;
     left: 70%;
-    z-index: 75;
-    width: 50%;
+    z-index: 100;
+    width: 35%;
     transition: all 0.3s ease;
     transform-origin: center center;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
 }
 
 .counter img {
@@ -52,18 +65,20 @@
 
 .counter-text {
     position: absolute;
-    top: 43%;
-    left: 77%;
+    top: 49%;
+    left: 80%;
     transform: translate(-50%, -50%);
-    z-index: 76;
+    z-index: 101;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #dfdfdf;
+    color: #ff0000;
     font-family: Arial, sans-serif;
-    font-size: 3em;
+    font-size: 5em;
     font-weight: bold;
     text-shadow: 0 5px 5px rgba(0, 0, 0, 0.8);
+    -webkit-text-stroke: 2px #ffd700;
+    text-stroke: 2px #ffd700;
     width: 100%;
     height: 100%;
 }
@@ -73,6 +88,7 @@
     height: 100%;
     object-fit: contain;
     z-index: 20;
+    animation: wheelGlow 1.5s ease-in-out infinite;
 }
 
 .wheel-text-image {
@@ -203,8 +219,9 @@
     filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.4)) brightness(1.05) !important;
 }
 
-.spin-button-image:active {
-    content: url('./images/button_spin_pressed.png');
+.spin-button-image:active,
+.spin-button-image.pressed {
+    content: url('../images/button_spin_pressed.png');
     transform: translateX(-50%) translateY(3px);
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
 }

@@ -42,7 +42,6 @@ export class Animations1 {
             opacity: 0,
             x: -200,
             rotationY: 2160,
-            scaleX: -1,
             transformPerspective: 1000,
             transformStyle: "preserve-3d"
         });
@@ -69,7 +68,6 @@ export class Animations1 {
             opacity: 1,
             x: 0,
             rotationY: 0,
-            scaleX: -1,
             duration: 1.2,
             delay: 0,
             ease: "power3.out"

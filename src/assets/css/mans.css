@@ -12,7 +12,6 @@
 /* First character placement - left of wheel */
 .man-01 {
     left: 10%;
-    transform: scaleX(-1);
 }
 
 /* Second character placement - right of wheel */
@@ -29,21 +28,6 @@
     width: 30%;
 }
 
-/* Hover effect for characters */
-.mans:hover {
-    transform: translateY(-5px);
-    filter: brightness(1.1);
-}
-
-/* Apply reflection and account for it on hover */
-.man-01:hover {
-    transform: translateY(-5px) scaleX(-1);
-}
-
-/* Account for transformation for man-03 on hover */
-.man-03:hover {
-    transform: translateX(-50%) translateY(-5px);
-}
 
 /* Prevent overlap with button */
 @media (max-height: 700px) {
@@ -87,7 +71,6 @@
 
     .man-01 {
         left: 15%;
-        transform: scaleX(-1);
     }
 
     .man-02 {
@@ -108,7 +91,6 @@
 
     .man-01 {
         left: 7%;
-        transform: scaleX(-1);
     }
 
     .man-02 {
@@ -129,7 +111,6 @@
 
     .man-01 {
         left: 10%;
-        transform: scaleX(-1);
     }
 
     .man-02 {

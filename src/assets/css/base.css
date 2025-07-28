@@ -9,6 +9,7 @@ html {
     -ms-touch-action: manipulation !important;
     zoom: 1 !important;
     overflow-x: hidden;
+    overflow-y: visible;
 }
 
 body {
@@ -26,6 +27,7 @@ body {
     -ms-user-select: none;
     user-select: none;
     overflow-x: hidden;
+    overflow-y: visible;
 }
 
 .container {
@@ -35,7 +37,7 @@ body {
     margin: 0 auto;
     padding: var(--spacing-lg) var(--spacing-md);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 [data-src] {
@@ -59,4 +61,12 @@ body {
 
 * {
     -webkit-tap-highlight-color: transparent;
+}
+
+/* Force overflow visible for all containers that might clip shadows */
+.logo01-container,
+.logo01-container-mobile,
+.wheel-section,
+.container {
+    overflow: visible !important;
 }

@@ -128,6 +128,12 @@ export class Game1 {
         gameState.buttonBlocked = true;
         gameState.spinCount++;
         gameState.isSpinning = true;
+        
+        // Add pressed state to button
+        const spinButtonImage = document.querySelector('.spin-button-image');
+        if (spinButtonImage) {
+            spinButtonImage.classList.add('pressed');
+        }
 
         this.updateCounterText();
 
@@ -148,6 +154,12 @@ export class Game1 {
             spinHandled = true;
 
             gameState.isSpinning = false;
+            
+            // Remove pressed state from button
+            const spinButtonImage = document.querySelector('.spin-button-image');
+            if (spinButtonImage) {
+                spinButtonImage.classList.remove('pressed');
+            }
 
             if (gameState.spinCount === 2) {
                 gameState.buttonBlocked = true;

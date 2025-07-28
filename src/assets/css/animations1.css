@@ -142,6 +142,77 @@
     }
 }
 
+@keyframes logoMain {
+    /* Phase 1: Logo1 visible, starts to fade out and slide left */
+    0% {
+        transform: translateX(-50%);
+        opacity: 1;
+        filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));
+    }
+    16.66% {
+        transform: translateX(-150%);
+        opacity: 0;
+        filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));
+    }
+    /* Phase 2: Logo1 returns to position invisibly */
+    33.33% {
+        transform: translateX(-50%);
+        opacity: 0;
+        filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));
+    }
+    /* Phase 3: Logo1 fades in from current position */
+    66.66% {
+        transform: translateX(-50%);
+        opacity: 1;
+        filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));
+    }
+    /* Phase 1 again: Stay visible until next cycle */
+    100% {
+        transform: translateX(-50%);
+        opacity: 1;
+        filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));
+    }
+}
+
+@keyframes logoLetters {
+    /* Phase 1: Logo2 invisible, waiting */
+    0% {
+        transform: translateX(-50%);
+        opacity: 0;
+        filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));
+    }
+    /* Phase 1: Logo2 fades in as Logo1 slides out */
+    16.66% {
+        transform: translateX(-50%);
+        opacity: 1;
+        filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));
+    }
+    /* Phase 2: Logo2 visible */
+    33.33% {
+        transform: translateX(-50%);
+        opacity: 1;
+        filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));
+    }
+    /* Phase 3: Logo2 starts to fade out and slide left */
+    66.66% {
+        transform: translateX(-150%);
+        opacity: 0;
+        filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));
+    }
+    /* Phase 3: Logo2 returns to position invisibly */
+    83.33% {
+        transform: translateX(-50%);
+        opacity: 0;
+        filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));
+    }
+    /* Back to Phase 1: Stay invisible until next cycle */
+    100% {
+        transform: translateX(-50%);
+        opacity: 0;
+        filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.8));
+    }
+}
+
 @keyframes logo2Pulse {
     0% {
         transform: translate(-50%, -50%);
@@ -154,5 +225,23 @@
     100% {
         transform: translate(-50%, -50%);
         filter: brightness(1.2);
+    }
+}
+
+@keyframes wheelGlow {
+    0% {
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6)) 
+                drop-shadow(0 0 30px rgba(255, 255, 255, 0.4))
+                drop-shadow(0 0 45px rgba(255, 255, 255, 0.3));
+    }
+    50% {
+        filter: drop-shadow(0 0 25px rgba(255, 255, 255, 1)) 
+                drop-shadow(0 0 50px rgba(255, 255, 255, 0.8))
+                drop-shadow(0 0 75px rgba(255, 255, 255, 0.6));
+    }
+    100% {
+        filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6)) 
+                drop-shadow(0 0 30px rgba(255, 255, 255, 0.4))
+                drop-shadow(0 0 45px rgba(255, 255, 255, 0.3));
     }
 }
