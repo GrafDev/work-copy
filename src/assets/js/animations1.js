@@ -14,52 +14,15 @@ export class Animations1 {
     }
 
     static startWheelGlowAnimation() {
-        const wheelImage = document.querySelector('.wheel-image');
-        if (!wheelImage) return;
+        const wheelShadow = document.querySelector('.wheel-shadow');
+        if (!wheelShadow) return;
 
-        // Create infinite timeline
-        const glowTimeline = gsap.timeline({ repeat: -1 });
-        
-        glowTimeline
-            .to(wheelImage, {
-                filter: 'drop-shadow(0 0 8px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 16px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 24px rgba(255, 215, 0, 0.3))',
-                duration: 0.75,
-                ease: "power2.inOut"
-            })
-            .to(wheelImage, {
-                filter: 'drop-shadow(0 0 12px rgba(255, 215, 0, 1)) drop-shadow(0 0 24px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 36px rgba(255, 215, 0, 0.6))',
-                duration: 0.75,
-                ease: "power2.inOut",
-                onComplete: () => {
-                    // Switch to red
-                    glowTimeline.clear();
-                    this.continueWheelGlowAnimation(wheelImage, false); // false = red
-                }
-            });
+        // Set золотое свечение - 3 слоя
+        if (wheelShadow) {
+            wheelShadow.style.filter = 'drop-shadow(0 0 20px rgba(255, 215, 0, 1)) drop-shadow(0 0 20px rgba(255, 215, 0, 1)) drop-shadow(0 0 40px rgba(255, 215, 0, 1))';
+        }
     }
 
-    static continueWheelGlowAnimation(wheelImage, isGold) {
-        const color = isGold ? '255, 215, 0' : '255, 0, 0';
-        
-        const glowTimeline = gsap.timeline({ repeat: -1 });
-        
-        glowTimeline
-            .to(wheelImage, {
-                filter: `drop-shadow(0 0 8px rgba(${color}, 0.6)) drop-shadow(0 0 16px rgba(${color}, 0.4)) drop-shadow(0 0 24px rgba(${color}, 0.3))`,
-                duration: 0.75,
-                ease: "power2.inOut"
-            })
-            .to(wheelImage, {
-                filter: `drop-shadow(0 0 12px rgba(${color}, 1)) drop-shadow(0 0 24px rgba(${color}, 0.8)) drop-shadow(0 0 36px rgba(${color}, 0.6))`,
-                duration: 0.75,
-                ease: "power2.inOut",
-                onComplete: () => {
-                    // Switch color
-                    glowTimeline.clear();
-                    this.continueWheelGlowAnimation(wheelImage, !isGold);
-                }
-            });
-    }
 
     static syncLogo02Positions() {
         const logo02Container = document.querySelector('.logo02-container');
@@ -268,7 +231,30 @@ export class Animations1 {
             });
         }
         
-        // Start wheel glow animation
+        // Initialize wheel-shadow с поворотом но без мигания
+        const wheelShadow = document.querySelector('.wheel-shadow');
+        if (wheelShadow) {
+            gsap.set(wheelShadow, { opacity: 0, rotation: 0 });
+            
+            // Start fade-in
+            gsap.to(wheelShadow, {
+                opacity: 1,
+                duration: 3,
+                delay: 1,
+                ease: "power2.out"
+            });
+            
+            // Start rotation immediately with fade-in
+            gsap.to(wheelShadow, {
+                rotation: 360,
+                duration: 8,
+                delay: 1,
+                repeat: -1,
+                ease: "none"
+            });
+        }
+        
+        // Постоянное свечение без анимации
         this.startWheelGlowAnimation();
     }
 
@@ -325,6 +311,7 @@ export class Animations1 {
 
     static handleFinalAnimation(element, spinCount, arrowElement, arrowAnimation, resolve) {
         const wheelTextImage = document.querySelector('.wheel-text-image');
+        
         if (spinCount === 0) {
             resolve();
             return;
@@ -342,6 +329,7 @@ export class Animations1 {
         } else if (spinCount === 2) {
             settlingAnim = this.createSettlingAnimation(element, 253, 268);
         }
+
 
         if (settlingAnim) {
             settlingAnim.then(resolve);

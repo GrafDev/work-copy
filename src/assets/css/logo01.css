@@ -1,10 +1,10 @@
 /* Logo01 Container */
 .logo01-container {
     position: absolute;
-    left: 10%;
-    top: -2%;
+    left: 50%;
+    top: -15%;
     transform: translateX(-50%);
-    z-index: 5;
+    z-index: 55;
     overflow: visible;
 }
 
@@ -31,7 +31,7 @@
         position: absolute;
         width: calc(var(--wheel-section-size) * 0.45);
         height: calc(var(--wheel-section-size) * 0.2);
-        top: -32%;
+        top: -55%;
         left: 50%;
         transform: translateX(-50%);
         z-index: 55;
@@ -57,25 +57,25 @@
 
 /* Tablets in portrait orientation (not so narrow) */
 @media (max-aspect-ratio: 1/1) and (min-width: 768px) {
-    .logo01 {
-        top: -32%;
-        width: 60%;
+    .logo01-container {
+        top: -45%;
+        width: calc(var(--wheel-section-size) * 0.5);
     }
 }
 
 /* Large tablets and small laptops (768px - 1199px) */
 @media (min-width: 768px) and (max-width: 1199px) {
-    .logo01 {
-        top: -32%;
-        width: 60%;
+    .logo01-container {
+        top: -45%;
+        width: calc(var(--wheel-section-size) * 0.5);
     }
 }
 
 /* Landscape orientation - Not narrow screens (width/height < 1.6) */
 @media (min-aspect-ratio: 1/1) and (max-aspect-ratio: 16/10) {
     .logo01 {
-        left: 20%;
-        top: 1%;
+        left: 15%;
+        top: -7%;
         width: calc(var(--wheel-section-size) * 0.4);
         transform: translateX(-90%);
     }
@@ -84,8 +84,8 @@
 /* Landscape orientation - Narrow screens (width/height 1.6-1.9) */
 @media (min-aspect-ratio: 16/10) and (max-aspect-ratio: 19/10) {
     .logo01 {
-        left: 20%;
-        top: 1%;
+        left: 15%;
+        top: -7%;
         width: calc(var(--wheel-section-size) * 0.4);
         transform: translateX(-80%);
     }
@@ -95,7 +95,7 @@
 @media (min-aspect-ratio: 19/10) {
     .logo01 {
         left: 10%;
-        top: 1%;
+        top: -7%;
         width: calc(var(--wheel-section-size) * 0.4);
         transform: translateX(-80%);
     }
@@ -105,7 +105,7 @@
 /* Low screens in landscape orientation */
 @media (max-height: 375px) and (min-aspect-ratio: 1/1) {
     .logo01 {
-        top: 1%;
+        top: -7%;
         transform: translateX(-90%);
     }
 }
@@ -121,9 +121,18 @@
 
 /* Desktops with wide aspect ratio (for widescreen monitors) */
 @media (min-width: 1200px) and (min-aspect-ratio: 16/9) {
-    .logo01 {
-        top: -32%;
-        width: calc(var(--wheel-section-size) * 0.6);
-        transform: translateX(-20%);
+    .logo01-container {
+        left: 15%;
+        top: -7%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Override for portrait screens - logo always on top center */
+@media (max-aspect-ratio: 1/1) {
+    .logo01-container {
+        left: 50% !important;
+        top: -15% !important;
+        transform: translateX(-50%) !important;
     }
 }

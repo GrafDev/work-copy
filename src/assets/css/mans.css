@@ -51,14 +51,8 @@
 
 /* Mobile phones - portrait orientation (very high aspect ratio) */
 @media (max-width: 530px) {
-    .man-01, .man-02 {
-        display: none;
-    }
-
-    .man-03 {
-        display: block;
-        width: 80%;
-        bottom: -50%;
+    .mans, .man-01, .man-02, .man-03 {
+        display: none !important;
     }
 }
 

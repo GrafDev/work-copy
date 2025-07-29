@@ -26,36 +26,36 @@ body {
 /* Large screens - increase wheel size */
 @media (min-width: 1200px) {
     :root {
-        --wheel-section-size: min(55vw, 65vh, 700px) !important;
+        --wheel-section-size: min(55vw, 65vh, 700px);
     }
     
     .spin-button-image {
-        bottom: -24% !important;
-        width: calc(var(--wheel-section-size) * 0.32) !important;
+        bottom: -24%;
+        width: calc(var(--wheel-section-size) * 0.32);
     }
 }
 
 /* Extra large screens */
 @media (min-width: 1600px) {
     :root {
-        --wheel-section-size: min(50vw, 60vh, 800px) !important;
+        --wheel-section-size: min(50vw, 60vh, 800px);
     }
     
     .spin-button-image {
-        bottom: -29% !important;
-        width: calc(var(--wheel-section-size) * 0.34) !important;
+        bottom: -29%;
+        width: calc(var(--wheel-section-size) * 0.34);
     }
 }
 
 /* Ultra wide screens */
 @media (min-width: 2000px) {
     :root {
-        --wheel-section-size: min(45vw, 55vh, 900px) !important;
+        --wheel-section-size: min(45vw, 55vh, 900px);
     }
     
     .spin-button-image {
-        bottom: -32% !important;
-        width: calc(var(--wheel-section-size) * 0.36) !important;
+        bottom: -32%;
+        width: calc(var(--wheel-section-size) * 0.36);
     }
 }
 
@@ -97,12 +97,13 @@ body {
     transform-origin: center 400%;
 }
 
-/* Counter styles */
+/* Counter styles - справа от стрелки */
 .counter {
     position: absolute;
     top: -5%;
     left: 65%;
     width: calc(var(--wheel-section-size) * 0.28);
+    height: calc(var(--wheel-section-size) * 0.28 * 40 / 110);
     z-index: 100;
 }
 
@@ -127,29 +128,40 @@ body {
         top: -20%;
         left: 50%;
         transform: translateX(-50%);
-        width: calc(var(--wheel-section-size) * 0.189);
+        width: calc(var(--wheel-section-size) * 0.32);
+        height: calc(var(--wheel-section-size) * 0.32 * 40 / 110);
         z-index: 100;
     }
 
+    .counter img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
     .counter-text {
-        font-size: calc(var(--wheel-section-size) * 0.10);
+        font-size: calc(var(--wheel-section-size) * 0.09);
+        top: 50%;
+        left: 80%;
+        height: 100%;
+        line-height: 1;
     }
 }
 
-/* Logo styles */
+/* Logo styles - слева */
 .logo01 {
     position: absolute;
-    left: 25%;
-    top: 1%;
+    left: 15%;
+    top: -7%;
     width: calc(var(--wheel-section-size) * 0.4);
     transform: translateX(-50%);
-    z-index: 5;
+    z-index: 55;
 }
 
 /* Logo position adjustment for narrow screens */
 @media (max-width: 530px) {
     .logo01 {
-        top: -42%;
+        top: -55%;
         width: calc(var(--wheel-section-size) * 0.55);
     }
 }
@@ -172,6 +184,7 @@ body {
     .logo01 {
         left: 15%;
         top: -2%;
+        transform: translateX(0);
     }
 
     /* Spin button styles */
@@ -224,7 +237,7 @@ body {
     left: 20%;
     width: calc(var(--wheel-section-size) * 0.35);
     transform: translateX(-50%);
-    z-index: 5;
+    z-index: 55;
 }
 
 .ios-landscape .logo01.letters-o {

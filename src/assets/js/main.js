@@ -169,6 +169,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         new URL('/src/assets/images/logo02_dragons.png', import.meta.url).href,
         new URL('/src/assets/images/arrow.png', import.meta.url).href,
         new URL('/src/assets/images/wheel.png', import.meta.url).href,
+        new URL('/src/assets/images/wheel-shadow.png', import.meta.url).href,
         new URL('/src/assets/images/wheel-border.png', import.meta.url).href,
         new URL('/src/assets/images/wheel-lightes.png', import.meta.url).href,
         new URL('/src/assets/images/button_spin.png', import.meta.url).href,
