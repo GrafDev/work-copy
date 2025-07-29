@@ -7,6 +7,60 @@ import {ArrowAnimations} from './arrow-animations.js';
 export class Animations1 {
     static spriteManager = new SpriteManager();
 
+    static toggleWheelGlow() {
+        gameState.wheelGlowIsGold = !gameState.wheelGlowIsGold;
+        const glowColor = gameState.wheelGlowIsGold ? '255, 215, 0' : '255, 0, 0';
+        document.documentElement.style.setProperty('--wheel-glow-color', glowColor);
+    }
+
+    static startWheelGlowAnimation() {
+        const wheelImage = document.querySelector('.wheel-image');
+        if (!wheelImage) return;
+
+        // Create infinite timeline
+        const glowTimeline = gsap.timeline({ repeat: -1 });
+        
+        glowTimeline
+            .to(wheelImage, {
+                filter: 'drop-shadow(0 0 8px rgba(255, 215, 0, 0.6)) drop-shadow(0 0 16px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 24px rgba(255, 215, 0, 0.3))',
+                duration: 0.75,
+                ease: "power2.inOut"
+            })
+            .to(wheelImage, {
+                filter: 'drop-shadow(0 0 12px rgba(255, 215, 0, 1)) drop-shadow(0 0 24px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 36px rgba(255, 215, 0, 0.6))',
+                duration: 0.75,
+                ease: "power2.inOut",
+                onComplete: () => {
+                    // Switch to red
+                    glowTimeline.clear();
+                    this.continueWheelGlowAnimation(wheelImage, false); // false = red
+                }
+            });
+    }
+
+    static continueWheelGlowAnimation(wheelImage, isGold) {
+        const color = isGold ? '255, 215, 0' : '255, 0, 0';
+        
+        const glowTimeline = gsap.timeline({ repeat: -1 });
+        
+        glowTimeline
+            .to(wheelImage, {
+                filter: `drop-shadow(0 0 8px rgba(${color}, 0.6)) drop-shadow(0 0 16px rgba(${color}, 0.4)) drop-shadow(0 0 24px rgba(${color}, 0.3))`,
+                duration: 0.75,
+                ease: "power2.inOut"
+            })
+            .to(wheelImage, {
+                filter: `drop-shadow(0 0 12px rgba(${color}, 1)) drop-shadow(0 0 24px rgba(${color}, 0.8)) drop-shadow(0 0 36px rgba(${color}, 0.6))`,
+                duration: 0.75,
+                ease: "power2.inOut",
+                onComplete: () => {
+                    // Switch color
+                    glowTimeline.clear();
+                    this.continueWheelGlowAnimation(wheelImage, !isGold);
+                }
+            });
+    }
+
     static syncLogo02Positions() {
         const logo02Container = document.querySelector('.logo02-container');
         if (!logo02Container) return;
@@ -213,6 +267,9 @@ export class Animations1 {
                 }
             });
         }
+        
+        // Start wheel glow animation
+        this.startWheelGlowAnimation();
     }
 
 

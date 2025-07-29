@@ -26,21 +26,36 @@ body {
 /* Large screens - increase wheel size */
 @media (min-width: 1200px) {
     :root {
-        --wheel-section-size: min(60vw, 70vh, 900px);
+        --wheel-section-size: min(55vw, 65vh, 700px) !important;
+    }
+    
+    .spin-button-image {
+        bottom: -24% !important;
+        width: calc(var(--wheel-section-size) * 0.32) !important;
     }
 }
 
 /* Extra large screens */
 @media (min-width: 1600px) {
     :root {
-        --wheel-section-size: min(50vw, 70vh, 1000px);
+        --wheel-section-size: min(50vw, 60vh, 800px) !important;
+    }
+    
+    .spin-button-image {
+        bottom: -29% !important;
+        width: calc(var(--wheel-section-size) * 0.34) !important;
     }
 }
 
 /* Ultra wide screens */
 @media (min-width: 2000px) {
     :root {
-        --wheel-section-size: min(40vw, 70vh, 1100px);
+        --wheel-section-size: min(45vw, 55vh, 900px) !important;
+    }
+    
+    .spin-button-image {
+        bottom: -32% !important;
+        width: calc(var(--wheel-section-size) * 0.36) !important;
     }
 }
 
@@ -145,7 +160,7 @@ body {
 }
 
 /* For narrow screens in landscape orientation */
-@media (min-aspect-ratio: 16/9) {
+@media (min-aspect-ratio: 16/9) and (max-width: 1199px) {
     :root {
         --wheel-section-size: min(80dvw, 70vh, 450px);
     }
